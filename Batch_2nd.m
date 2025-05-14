@@ -12,9 +12,19 @@ if isempty(SPMFolder)
     error('SPM not found in MATLAB path. Please add SPM to your MATLAB path.');
 end
 
-% Check if BrainNet Viewer is in path
+% Check if BrainNet Viewer is in path, otherwise add local copy
 if isempty(which('BrainNet'))
-    error('BrainNet Viewer not found in MATLAB path. Please add BrainNet Viewer to your MATLAB path.');
+    localBNV = fullfile(pwd, 'BrainNetViewer');
+    if exist(localBNV, 'dir')
+        addpath(localBNV);
+        if isempty(which('BrainNet'))
+            error('BrainNet Viewer not found even after adding ./BrainNetViewer. Please check your setup.');
+        else
+            fprintf('BrainNet Viewer loaded from local ./BrainNetViewer folder.\n');
+        end
+    else
+        error('BrainNet Viewer not found in MATLAB path, and ./BrainNetViewer does not exist.');
+    end
 end
 
 CodeFolder = pwd;
