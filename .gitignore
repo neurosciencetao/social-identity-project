@@ -1,0 +1,17 @@
+# MATLAB specific files
+*.asv
+*.mat
+*.mex*
+*.mexa64
+*.mexmaca64
+*.mexmaca64
+*.mexw32
+*.mexw64
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*~ 
